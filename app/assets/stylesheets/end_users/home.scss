@@ -1,0 +1,161 @@
+// Place all the styles related to the end_users::home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+header{
+  padding-bottom: 1rem;
+  justify-content: flex-end;
+  background-color: #fff8fe;
+  img{
+  width: 220px;
+  height: 65px;
+  margin: 7.5px 0 0 3%;
+  }
+}
+.logo-left > :first-child {
+  margin-right: auto;
+}
+.header-nav > li{
+  display: inline-block;
+  margin-right: 50px;
+  font: bolder 1.5rem/80px sans-serif;
+  color: #0a77ff;
+}
+.header-nav > li:last-child{
+  color: #fff;
+  background-color: #0a77ff;
+  line-height: 40px;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-right: 100px;
+}
+
+.content{
+  background-color: #fff8fe;
+}
+.top-content{
+  height: 35rem;
+  margin-top: 7rem;
+  margin-bottom: 10rem;
+}
+.top-content-main{
+  h1{
+   font: bold 5.6rem/6.08rem sans-serif;
+  }
+  p{
+    font-size: 1.5rem;
+  }
+  ul{
+    margin-top: 4rem;
+    li{
+      font: 1.7rem sans-serif;
+    }
+  }
+}
+.top-content-main > ul > li{
+  color: #fff;
+  background-color: #0a77ff;
+  width: 200px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-right: 30px;
+  font: bolder 1.5rem/50px ;
+}
+.top-content-sub{
+  img{
+    width: 45rem;
+    height: 30rem;
+    border-radius: 100px;
+  }
+}
+.coin{
+  margin-left: 2rem;
+  text-align: center;
+  background-color: #f2f7ff;
+  .coin-detail{
+    font: bolder 1.2rem sans-serif;
+    margin-top: 1rem;
+  }
+  span{
+    font: bolder 1.6rem sans-serif;
+  }
+}
+
+.service-detail-first{
+  height: auto;
+}
+.service-detail{
+  height: 40rem;
+}
+.title{
+  font: bolder 2.8rem sans-serif;
+}
+.explanation{
+  font: 1.5rem sans-serif;
+  width: 50rem;
+}
+
+.content3{
+  height: 50rem;
+  background-color: #fff8fe;
+  .container{
+    padding-top: 10rem;
+  }
+  h2{
+    text-align: center;
+    font: bolder 3rem sans-serif;
+    margin-bottom: 4rem;
+  }
+}
+.procedure{
+  .procedure-num{
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    border-radius: 5px;
+    font: bold 2.5rem  sans-serif;
+    color: #fff;
+    background-color: #0a77ff;
+  }
+  h3{
+    font: bolder 1.5rem sans-serif;
+    margin: 2rem 0;
+  }
+}
+
+.content4{
+  background: #0a77ff;
+  border: none;
+  clip-path: ellipse(75% 100% at center top);
+  min-height: 370px;
+  h1{
+    font: bold 3rem sans-serif;
+    color: white;
+    text-align: center;
+    padding-top: 12rem;
+  }
+  li{
+    color: #0a77ff;
+    background-color: #fff;
+    width: 200px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 3rem auto 0 auto;
+    font: bolder 1.5rem/5rem sans-serif;
+  }
+}
+
+footer{
+  height: 2rem;
+  width: 110rem;
+  border-top: solid 4px #f1f1f1;
+  margin: 2rem auto;
+  p{
+    font: 1.2rem sans-serif;
+    margin: 0.5rem 0;
+    opacity: .8;
+  }
+}
