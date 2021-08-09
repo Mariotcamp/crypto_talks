@@ -1,0 +1,2 @@
+module EndUsers::QuizesHelper
+end
