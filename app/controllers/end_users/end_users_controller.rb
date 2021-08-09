@@ -6,8 +6,9 @@ class EndUsers::EndUsersController < ApplicationController
   def create
     @end_user = EndUser.new(end_user_params)
     if @end_user.save
+      log_in (@end_user)
       flash[:success] = "ユーザー登録に成功しました"
-      # クイズ開始画面に飛ばしたい。
+      redirect_to quizes_path
     else
       render 'new'
     end

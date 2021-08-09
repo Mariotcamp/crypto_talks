@@ -1,13 +1,4 @@
-<header class="flex logo-left">
-  <img src="/assets/logo_transparent.png" alt="ロゴ">
-  <nav>
-    <ul class="header-nav">
-      <a href="#">このサービスについて</a><!--ここはid属性をつけてクリックしたら画面の下に飛ぶようにする-->
-      <a href="#">サインイン</a>
-      <a href="/end_users/new">さっそくはじめる</a>
-    </ul>
-  </nav>
-</header>
+<%= render '/shared/header' %>
 
 <div class="content">
   <div class="container">
@@ -25,7 +16,7 @@
           <p>楽しく・安全に仮想通貨を利用する時代。</p>
           <div class="flex">
             <a href="/end_users/new">はじめる</a>
-            <a href="#">サインイン</a>
+            <a href="/login">サインイン</a>
           </div>
         </div>
         <div class="col-lg-5 top-content-sub">

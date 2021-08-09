@@ -1,0 +1,24 @@
+<div class="log_in_page">
+  <div class="icon-cover">
+    <a href="/"><img src="/assets/logo_transparent.png" alt="ロゴ"></a>
+  </div>
+  <div class="title">
+    <h1>アカウント情報を入力してください</h1>
+    <p>登録した<span>ユーザー名</span>を入力してください。</p>
+  </div>
+  <% if flash %>
+    <div class="log_in_flash"><%= render 'shared/flash_messages' %></div>
+  <% end %>
+  <div class="log_in_form">
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+      <p>ユーザー名</p>
+      <%= f.text_field :name, class: "form form-control" %>
+      <p>パスワード</p>
+      <%= f.password_field :password, class: "form form-control" %>
+      <%= f.submit 'ログイン', class: "submit-button" %>
+    <% end %>
+  </div>
+  <div class="suggest">
+    <p>まだアカウントをお持ちではないですか？<br><a href="/end_users/new">新規アカウントを作成する</a></p>
+  </div>
+</div>

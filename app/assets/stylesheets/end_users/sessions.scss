@@ -1,7 +1,7 @@
-// Place all the styles related to the end_users::end_users controller here.
+// Place all the styles related to the end_users::Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.sign_up_page{
+.log_in_page{
   background-color: #fff8fe;
   height: auto;
   min-height: 100vh;
@@ -15,7 +15,7 @@
   }
 }
 .title{
-  max-width: 750px;
+  max-width: 770px;
   text-align: center;
   margin: 0 auto;
   h1{
@@ -30,9 +30,9 @@
     }
   }
 }
-.sign_up_form{
+.log_in_form{
   width: 460px;
-  height: 450px;
+  height: 300px;
   margin: 0 auto;
   padding-left: 30px;
   padding-top: 41px;
@@ -75,4 +75,8 @@
 .error_messages{
   width: 460px;
   margin: 0 auto;
+}
+.log_in_flash{
+  width: 460px;
+  margin: 20px auto;
 }
