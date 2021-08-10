@@ -14,7 +14,8 @@
       <p>ユーザー名</p>
       <%= f.text_field :name, class: "form form-control" %>
       <p>パスワード</p>
-      <%= f.password_field :password, class: "form form-control" %>
+      <%= f.password_field :password, class: "form form-control" %><br>
+      <%= f.check_box :remember_me, class: "remember_me_button" %><span>次回から自動でログインする</span>
       <%= f.submit 'ログイン', class: "submit-button" %>
     <% end %>
   </div>
