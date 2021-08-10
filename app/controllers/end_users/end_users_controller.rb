@@ -7,6 +7,7 @@ class EndUsers::EndUsersController < ApplicationController
     @end_user = EndUser.new(end_user_params)
     if @end_user.save
       log_in (@end_user)
+      remember (@end_user)
       flash[:success] = "ユーザー登録に成功しました"
       redirect_to quizes_path
     else
