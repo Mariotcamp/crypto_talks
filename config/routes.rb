@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
     get '/quizes', to: 'quizes#take'
+    post '/quizes/result', to: 'quizes#result'
   end
 end

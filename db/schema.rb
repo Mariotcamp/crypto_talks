@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_111104) do
+ActiveRecord::Schema.define(version: 2021_08_12_052402) do
 
   create_table "end_users", force: :cascade do |t|
     t.string "name", null: false
@@ -19,8 +19,20 @@ ActiveRecord::Schema.define(version: 2021_08_09_111104) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest", null: false
     t.string "remember_digest"
+    t.integer "quiz_score"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["name"], name: "index_end_users_on_name", unique: true
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "question", null: false
+    t.string "option1", null: false
+    t.string "option2", null: false
+    t.string "option3", null: false
+    t.string "option4", null: false
+    t.integer "answer_number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
