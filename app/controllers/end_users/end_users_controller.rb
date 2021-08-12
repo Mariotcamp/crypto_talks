@@ -1,4 +1,5 @@
 class EndUsers::EndUsersController < ApplicationController
+  before_action :logged_in_end_user, only: [:edit, :update]
   def new
     @end_user = EndUser.new
   end
