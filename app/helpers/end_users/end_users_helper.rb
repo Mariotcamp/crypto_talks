@@ -1,2 +1,0 @@
-module EndUsers::EndUsersHelper
-end
