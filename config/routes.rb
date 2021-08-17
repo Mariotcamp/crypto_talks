@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     delete '/logout', to: 'sessions#destroy'
     get '/quizes', to: 'quizes#take'
     post '/quizes/result', to: 'quizes#result'
+    get '/lowroom', to: 'rooms#lowroom'
+    get '/midroom', to: 'rooms#midroom'
+    get '/upperroom', to: 'rooms#upperroom'
   end
 end
