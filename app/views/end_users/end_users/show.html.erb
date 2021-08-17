@@ -1,0 +1,15 @@
+<div class="show-account flex">
+  <%= render '/shared/left-content' %>
+  <div class="center-content">
+    <% if @end_user.image.attached? %>
+      <div class="profile-image"><%= image_tag @end_user.image %></div>
+    <% else %>
+      <div class="profile-image"><img src="/assets/no_image.jpg"></div>
+    <% end %>
+    <p class="end_user_name"><%= @end_user.name %><%= link_to 'プロフィールを編集', edit_end_user_path(@end_user) %></p>
+    <p class="profile-sentence"><%= @end_user.profile %></p>
+  </div>
+  <div class="right-content">
+
+  </div>
+</div>

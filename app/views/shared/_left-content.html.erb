@@ -1,0 +1,8 @@
+<div class="left-content">
+  <a href="/"><img src="/assets/logo_transparent.png" alt="ロゴ"></a> <!-- あえてルートにhrefを設定するのもあり -->
+  <a href="/"><i class="fas fa-undo-alt"></i>　トップ　　　</a>
+  <a href="#"><i class="fas fa-search"></i>　トーク検索　</a>
+  <a href="#"><i class="fas fa-heart"></i>　自分のいいね</a>
+  <a href="/end_users/<%= current_end_user.id %>"><i class="fas fa-users"></i>　アカウント　</a>
+  <a data-confirm="本当にログアウトしますか？" rel="nofollow" data-method="delete" href="/logout" style="color: #ff4f4f;"><i class="fas fa-sign-out-alt"></i>　ログアウト　</a>
+</div>
