@@ -1,6 +1,9 @@
 class EndUsers::QuizesController < ApplicationController
   before_action :logged_in_end_user
   def take
+    unless current_end_user.quiz_score.nil?
+      redirect_to lowroom_path
+    end
     @quizes = Quiz.all
   end
 
@@ -18,6 +21,18 @@ class EndUsers::QuizesController < ApplicationController
       if answer_num.to_i == quiz.answer_number
         current_end_user.quiz_score += 1
       end
+    end
+    current_end_user.update_attribute(:quiz_score, current_end_user.quiz_score)
+    score = current_end_user.quiz_score
+    if score <= 3
+      redirect_to lowroom_path
+    elsif score <= 6
+      redirect_to midroom_path
+    elsif score <= 8
+      redirect_to upperroom_path
+    else
+      flash[:danger] = "無効なスコア。もう一度クイズに答えてください"
+      current_end_user.update_attribute(:quiz_score, null)
     end
   end
 

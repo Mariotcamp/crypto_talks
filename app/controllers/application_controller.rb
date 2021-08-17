@@ -7,4 +7,18 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def finished_log_in
+    if logged_in?
+      redirect_to midroom_path
+    end
+  end
+
+  def have_score
+    if current_end_user.quiz_score.nil?
+      flash[:danger] = "クイズを完了後、ご利用いただける機能です"
+      redirect_to quizes_path
+    end
+  end
+
 end
