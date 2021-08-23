@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope module: :end_users do
     root to: 'home#index'
     resources :end_users
+    resources :posts, only: [:create, :show, :edit, :update, :destroy]
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'

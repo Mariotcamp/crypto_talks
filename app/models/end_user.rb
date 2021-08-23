@@ -8,6 +8,7 @@ class EndUser < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :profile, length: {maximum: 150}
   has_one_attached :image
+  has_many :posts, dependent: :destroy
 
   def EndUser.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

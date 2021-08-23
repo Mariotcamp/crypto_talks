@@ -1,0 +1,26 @@
+// Place all the styles related to the end_users::posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//edit画面のcss
+.post-form{
+    width: 100%;
+    margin-left: 10px;
+    #edit-post-sentence{
+    width: 70%;
+    resize: none;
+    margin-top: 10px;
+    font: 20px sans-serif;
+    border: none;
+    outline: none;
+    }
+    .post-button{
+      width: 18%;
+      height: 60px;
+      color: #0a77ff;
+      font: 40px sans-serif;
+      border: none;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }

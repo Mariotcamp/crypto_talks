@@ -15,9 +15,9 @@
  */
  @import "bootstrap";
 *{
-  padding:0;
-  margin:0;
-  box-sizing:border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   font-size: 62.5%;
 }
 li{
@@ -31,7 +31,7 @@ a:hover {
   text-decoration: none;
 }
 .flex{
-  display:flex;
+  display: flex;
 }
 
 #error_explanation {
