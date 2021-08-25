@@ -1,0 +1,16 @@
+<div class="post-form-place flex">
+  <% if @end_user.image.attached? %>
+    <div class="profile-image"><%= image_tag @end_user.image %></div>
+  <% else %>
+    <div class="profile-image"><img src="/assets/no_image.jpg"></div>
+  <% end %>
+  <div class="post-form">
+    <%= form_with(model: post, local: true) do |f| %>
+      <textarea placeholder="みんなで話そう" name="post[sentence]" id="post-sentence" wrap="soft"></textarea>
+      <%= f.hidden_field :end_user_id, :value => current_end_user.id %>
+      <%= f.button :type => "submit", class: "post-button" do %>
+        <i class="far fa-paper-plane"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
