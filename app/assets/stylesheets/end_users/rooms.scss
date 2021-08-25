@@ -79,6 +79,19 @@
     }
   }
 }
+.post-bottom-layer{
+  .comment-link{
+    width: 50%;
+    text-align: center;
+  }
+  .favorite-link{
+    width: 50%;
+    text-align: center;
+    .post-favorite:hover{
+      color: red;
+    }
+  }
+}
 
 .post-form-place{
   position: absolute;
