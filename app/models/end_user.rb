@@ -10,6 +10,11 @@ class EndUser < ApplicationRecord
   has_one_attached :image
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
 
   def EndUser.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -33,4 +38,17 @@ class EndUser < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def follow(other_end_user)
+    following << other_end_user
+  end
+
+  def unfollow(other_end_user)
+    active_relationships.find_by(followed_id: other_end_user.id).destroy
+  end
+
+  def following?(other_end_user)
+    following.include?(other_end_user)
+  end
+
 end

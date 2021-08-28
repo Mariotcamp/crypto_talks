@@ -80,6 +80,9 @@
 .center-content{
   padding: 30px 50px 0 50px;
   position: relative;
+  a{
+    color: black;
+  }
 }
 .profile-image{
   img{
@@ -97,7 +100,6 @@
     padding: 5px;
     border: solid 1.5px #e6e6e6;
     border-radius: 15px;
-    color: black;
   }
   a:hover{
     color: black;
@@ -106,6 +108,38 @@
 }
 .profile-sentence{
   font: 1.5rem sans-serif;
+}
+.follow-stats{
+  p{
+    font: bolder 2rem sans-serif;
+    margin-right: 15px;
+  }
+  // p:last-child{
+  //   padding: 0 15px;
+  //   position: absolute;
+  //   right: 8%;
+  //   background-color: #e6e6e6;
+  //   border-radius: 15px;
+  // }
+  span{
+    opacity: .5;
+    font-size: 1.3rem;
+  }
+}
+.follow-rel-button{
+  line-height: 26px;
+  position: absolute;
+  right: 8%;
+  margin-top: 2px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: none;
+  font: bolder 15px sans-serif;
+  background-color: #e6e6e6;
+}
+.unfollow-button:hover{
+  color: red;
+  background-color: #ffd5d5;
 }
 //以下エンドユーザーのedit画面のcss
 
@@ -126,4 +160,44 @@
   &:hover{
     background-color: #e6e6e6;
   }
+}
+
+//following画面のcss
+.returen-profile{
+  width: 50px;
+  height: 50px;
+}
+.following-center-content{
+  min-height: 100vh;
+  width: 50%;
+  border-left: solid 1px #e2e2e2;
+  border-right: solid 1px #e2e2e2;
+  h1{
+    font: bold 20px sans-serif;
+    padding: 30px;
+    margin: 0;
+    border-bottom: solid 2px #e6e6e6;
+  }
+  .rel-follow-content{
+    padding: 10px;
+    &:hover{
+      background-color: #f9f9f9;
+    }
+  }
+  .rel-follow-img{
+    margin-bottom: 10px;
+    img{
+      width: 70px;
+      height: 70px;
+    }
+  }
+  h2{
+    font: bolder 1.7rem sans-serif;
+    p{
+      font: 1.5rem sans-serif;
+    }
+  }
+}
+.following_followers_view{
+  right: 28%;
 }

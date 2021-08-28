@@ -29,7 +29,7 @@
 }
 
 .posting::-webkit-scrollbar {  /* Chrome, Safari 対応 */
-  display:none;
+  display: none;
 }
 .posting{
   height: 650px;
@@ -51,8 +51,12 @@
       }
       .post_end_user_name{
         width: 100%;
-        font: bolder 1.5rem sans-serif;
+        font: bolder 2.2rem sans-serif;
         margin: 22.5px 0 10px 8px;
+        a{
+          position: absolute;
+          color: black;
+        }
         p{
           font: 1.3rem sans-serif;
           line-height: 20px;

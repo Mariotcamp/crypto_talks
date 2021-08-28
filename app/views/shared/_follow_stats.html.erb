@@ -1,0 +1,9 @@
+<div class="follow-stats flex">
+  <p>
+    <a href="/end_users/<%= @end_user.id %>/following"><%= @end_user.following.count %><span>フォロー中</span></a>
+  </p>
+  <p>
+    <a href="/end_users/<%= @end_user.id %>/followers"><%= @end_user.followers.count %><span>フォロワー</span></a>
+  </p>
+  <%= render '/shared/follow_button' %>
+</div>

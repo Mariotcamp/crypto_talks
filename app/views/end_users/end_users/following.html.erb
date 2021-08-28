@@ -1,0 +1,36 @@
+<div class="flex">
+  <%= render '/shared/left-content' %>
+  <div class="following-center-content">
+    <h1>
+      <a href="/end_users/<%= @end_user.id %>"><svg viewBox="0 0 24 24" aria-hidden="true" class="returen-profile"><g><path d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path></g></svg></a>
+      <%= @end_user.name %>のフォロー
+    </h1>
+    <% @following_end_users.each do |following_end_user| %>
+      <div class="rel-follow-content flex">
+        <% if following_end_user.image.attached? %>
+          <div class="rel-follow-img profile-image"><%= image_tag following_end_user.image %></div>
+        <% else %>
+          <div class="rel-follow-img profile-image"><img src="/assets/no_image.jpg"></div>
+        <% end %>
+        <h2>
+          <%= following_end_user.name %>
+          <p><%= following_end_user.profile %></p>
+        </h2>
+        <% if @end_user == current_end_user %>
+          <% unless following_end_user == current_end_user %>
+            <% if current_end_user.following?(following_end_user) %>
+              <%= form_with(model: current_end_user.active_relationships.find_by(followed_id: following_end_user.id), html: {method: :delete}, local: true) do |f| %>
+                <%= f.submit "フォロー解除", class: "follow-rel-button unfollow-button following_followers_view" %>
+              <% end %>
+            <% else %>
+              <%= form_with(model: current_end_user.active_relationships.build, local: true) do |f| %>
+                <%= f.hidden_field :followed_id, :value => following_end_user.id %>
+                <%= f.submit "フォロー", class: "follow-rel-button following_followers_view" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
