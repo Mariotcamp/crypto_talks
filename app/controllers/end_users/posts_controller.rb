@@ -1,4 +1,5 @@
 class EndUsers::PostsController < ApplicationController
+before_action :correct_post_end_user, only: [:edit, :update]
 
   def create
     @post = Post.new(post_params)
@@ -33,6 +34,13 @@ class EndUsers::PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit(:end_user_id, :sentence)
+    end
+
+    def correct_post_end_user
+      post = Post.find(params[:id])
+      unless post.end_user.id == current_end_user.id
+        redirect_back(fallback_location: root_path)
+      end
     end
 end
 

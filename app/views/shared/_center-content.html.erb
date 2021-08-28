@@ -16,20 +16,22 @@
         <div class="card-body">
           <div class="post_end_user flex">
             <% if post.end_user.image.attached? %>
-              <div class="profile-image"><%= image_tag post.end_user.image %></div>
+              <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><%= image_tag post.end_user.image %></a></div>
             <% else %>
-              <div class="profile-image"><img src="/assets/no_image.jpg"></div>
+              <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
             <% end %>
-            <h2 class="post_end_user_name"><%= post.end_user.name %><br><p><%= post.sentence %></p></h2>
-            <div class="dropdown posting-dropdown">
-              <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-h"></i>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/posts/<%= post.id %>/edit"><i class="fas fa-edit"></i>　編集</a>
-                <a data-confirm="本当に削除しますか？この操作は取り消せません。" class="dropdown-item" href="/posts/<%= post.id %>" data-method="delete"><i class="fas fa-trash-alt"></i>　削除</a>
+            <h2 class="post_end_user_name"><a href="/end_users/<%= post.end_user.id %>"><%= post.end_user.name %></a><br><p><%= post.sentence %></p></h2>
+            <% if post.end_user.id == current_end_user.id %>
+              <div class="dropdown posting-dropdown">
+                <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-h"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/posts/<%= post.id %>/edit"><i class="fas fa-edit"></i>　編集</a>
+                  <a data-confirm="本当に削除しますか？この操作は取り消せません。" class="dropdown-item" href="/posts/<%= post.id %>" data-method="delete"><i class="fas fa-trash-alt"></i>　削除</a>
+                </div>
               </div>
-            </div>
+            <% end %>
             <p class="posting-time"><%= time_ago_in_words(post.updated_at) %>前</p>
           </div>
           <div class="post-bottom-layer flex">
