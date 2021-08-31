@@ -1,0 +1,92 @@
+.post-form {
+  width: 100%;
+  margin-left: 10px; }
+  .post-form #edit-post-sentence {
+    width: 70%;
+    resize: none;
+    margin-top: 10px;
+    font: 20px sans-serif;
+    border: none;
+    outline: none; }
+  .post-form .post-button {
+    width: 18%;
+    height: 60px;
+    color: #0a77ff;
+    font: 40px sans-serif;
+    border: none;
+    background-color: #fff;
+    border-radius: 50%; }
+
+#show-card {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
+  #show-card .card-body {
+    padding-bottom: 5px; }
+    #show-card .card-body .profile-image {
+      margin-top: 5px; }
+      #show-card .card-body .profile-image img {
+        width: 60px;
+        height: 60px; }
+    #show-card .card-body .post_end_user_name {
+      width: 100%;
+      font: bolder 2.2rem sans-serif;
+      margin: 22.5px 0 10px 8px; }
+      #show-card .card-body .post_end_user_name a {
+        position: absolute;
+        color: black; }
+      #show-card .card-body .post_end_user_name p {
+        font: 1.3rem sans-serif;
+        line-height: 20px;
+        margin: 8px 0 0 0; }
+    #show-card .card-body .posting-dropdown {
+      font-size: 40px;
+      position: absolute;
+      top: 7px;
+      right: 13rem; }
+      #show-card .card-body .posting-dropdown .dropdown-item {
+        font: 15px sans-serif; }
+    #show-card .card-body .fa-ellipsis-h {
+      color: black; }
+    #show-card .card-body .posting-time {
+      position: absolute;
+      top: 38px;
+      right: 5rem; }
+
+.comment-form {
+  padding: 10px; }
+
+.comment-post-form {
+  width: 80%;
+  height: 30px;
+  resize: none;
+  margin-top: 10px;
+  margin-right: 5px;
+  font: 20px sans-serif;
+  border: none;
+  outline: none; }
+
+#comment-end-user{
+  margin-right: 8px;
+}
+
+#comment-end-user > a > img{
+  width: 60px;
+  height: 60px;
+}
+
+.comment-submit-button{
+  background-color: #0a77ff;
+  width: 10%;
+  height: 30px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 15px;
+  font: 10px sans-serif;
+  color: #fff;
+}
+#comment-posting{
+  height: 540px;
+  min-height: 540px;
+}
+/*# sourceMappingURL=posts.css.map */
+

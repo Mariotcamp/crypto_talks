@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   belongs_to :end_user
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def have_favorite?(end_user)
     favorites.where(end_user_id: end_user.id).exists?

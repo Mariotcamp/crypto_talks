@@ -6,6 +6,7 @@ class EndUsers::FavoritesController < ApplicationController
     @post = Post.new
     @end_user = current_end_user
   end
+
   def create
     post = Post.find(params[:post_id])
     favorite = current_end_user.favorites.new(post_id: post.id)
