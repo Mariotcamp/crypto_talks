@@ -1,14 +1,4 @@
-<div class="post-view-title">
-  <% score = current_end_user.quiz_score %>
-  <% if score == 0 or score == 1 or score == 2 or score == 3 %>
-    <p>LowRoom</p>
-  <% elsif score == 4 or score == 5 or score == 6 %>
-    <p>MiddleRoom</p>
-  <% else %>
-    <p>UpperRoom</p>
-  <% end %>
-</div>
-
+<%= render '/shared/post_view_title' %>
 <div class="posting">
   <% if posts %>
     <% posts.each do |post| %>
@@ -36,7 +26,7 @@
           </div>
           <div class="post-bottom-layer flex">
             <div class="comment-link">
-              <a href="#"><i class="far fa-comment" style="font-size: 17px;"></i></a>
+              <a class="post-comment" href="/posts/<%= post.id %>"><i class="far fa-comment" style="font-size: 17px;"></i> <%= post.comments.count %></a>
             </div>
             <div class="favorite-link">
               <% if post.have_favorite?(current_end_user) %>

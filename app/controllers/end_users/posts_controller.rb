@@ -9,7 +9,9 @@ before_action :correct_post_end_user, only: [:edit, :update]
   end
 
   def show
-
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.order(id: "DESC")
   end
 
   def edit
