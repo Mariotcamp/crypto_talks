@@ -1,0 +1,1 @@
+$(".favorite-post<%= @post.id %>").html("<%= escape_javascript(render('/shared/create_favorite_button', post: @post)) %>");
