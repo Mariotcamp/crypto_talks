@@ -23,7 +23,7 @@ before_action :correct_post_end_user, only: [:edit, :update]
     if @post.update(post_params)
       redirect_to midroom_path
     else
-      render template: "/end_users/posts/edit.html.erb"
+      redirect_back(fallback_location: root_path) #もしかしたらこれでfield_with_errorsの問題が解決したかも。あとは上に１行フラッシュメッセージを追加しよう。
     end
   end
 
