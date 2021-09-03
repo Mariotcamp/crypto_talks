@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="comment">
-      <%= form_with(model:[@post, @comment], local: true) do |f| %>
+      <%= form_with(model:[@post, @comment], remote: true) do |f| %>
         <div class="comment-form flex">
           <% if current_end_user.image.attached? %>
             <div class="profile-image" id="comment-end-user"><a href="/end_users/<%= current_end_user.id %>"><%= image_tag current_end_user.image %></a></div>
@@ -52,35 +52,7 @@
           <%= f.submit '返信', class: "comment-submit-button" %>
         </div>
       <% end %>
-      <div class="comment-content">
-        <div class="posting" id="comment-posting">
-          <% @comments.each do |comment| %>
-            <div class="card">
-              <div class="card-body">
-                <div class="post_end_user flex">
-                  <% if comment.end_user.image.attached? %>
-                    <div class="profile-image"><a href="/end_users/<%= comment.end_user.id %>"><%= image_tag comment.end_user.image %></a></div>
-                  <% else %>
-                    <div class="profile-image"><a href="/end_users/<%= comment.end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
-                  <% end %>
-                  <h2 class="post_end_user_name"><a href="/end_users/<%= comment.end_user.id %>"><%= comment.end_user.name %></a><br><p><%= comment.sentence %></p></h2>
-                  <% if comment.end_user.id == current_end_user.id %>
-                    <div class="dropdown posting-dropdown">
-                      <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-h"></i>
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a data-confirm="本当に削除しますか？この操作は取り消せません。" class="dropdown-item" href="/posts/<%= comment.post.id %>/comments/<%= comment.id %>" data-method="delete"><i class="fas fa-trash-alt"></i>　削除</a>
-                      </div>
-                    </div>
-                  <% end %>
-                  <p class="posting-time"><%= time_ago_in_words(comment.updated_at) %>前</p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <%= render '/shared/comment_content', comments: @comments %>
     </div>
   </div>
 </div>
