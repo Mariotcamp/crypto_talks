@@ -29,11 +29,11 @@
             <div class="comment-link">
               <a href="/posts/<%= @post.id %>"><i class="far fa-comment" style="font-size: 17px; visibility:hidden;"></i></a>
             </div>
-            <div class="favorite-link">
+            <div class="favorite-link favorite-post<%= @post.id %>">
               <% if @post.have_favorite?(current_end_user) %>
-                <a href="/posts/<%= @post.id %>/favorites" data-method="delete"><i class="fas fa-heart" style="font-size: 17px; color: red;"></i> <%= @post.favorites.count %></a>
+                <%= render '/shared/destroy_favorite_button', post: @post %>
               <% else %>
-                <a class="post-favorite" href="/posts/<%= @post.id %>/favorites" data-method="post"><i class="far fa-heart" style="font-size: 17px;"></i> <%= @post.favorites.count %></a>
+                <%= render '/shared/create_favorite_button', post: @post %>
               <% end %>
             </div>
           </div>
