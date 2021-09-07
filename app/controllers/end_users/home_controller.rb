@@ -1,6 +1,6 @@
 class EndUsers::HomeController < ApplicationController
   before_action :finished_log_in
-  def index
+  def top
      # 今回の場合 params[:id] => "btc"
     url = URI.parse("https://public.bitbank.cc/#{"btc"}_jpy/ticker")
     # response_textに返ってきた値が入る

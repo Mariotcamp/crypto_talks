@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :end_users do
-    root to: 'home#index'
+    root to: 'home#top'
     resources :end_users do
       member do
         get :following, :followers
@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     get '/lowroom', to: 'rooms#lowroom'
     get '/midroom', to: 'rooms#midroom'
     get '/upperroom', to: 'rooms#upperroom'
+  end
+  namespace :admin_users do
+    get '/', to: 'home#top'
   end
 end
