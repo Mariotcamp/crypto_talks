@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_user?
+    if current_end_user.admin?
+      redirect_to admin_users_path
+    end
+  end
+
   def finished_log_in
     if logged_in?
       redirect_to midroom_path

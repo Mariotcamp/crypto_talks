@@ -1,5 +1,5 @@
 class EndUsers::QuizesController < ApplicationController
-  before_action :logged_in_end_user
+  before_action :logged_in_end_user, :admin_user?
   def take
     unless current_end_user.quiz_score.nil?
       redirect_to lowroom_path
