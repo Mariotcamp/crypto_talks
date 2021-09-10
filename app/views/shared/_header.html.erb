@@ -10,14 +10,40 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-top" role="tabpanel" aria-labelledby="nav-top-tab">
-        <h2>ここは管理者トップ画面です。</h2>
-        <p>画面上部にあるナビゲーションバーから希望のアクションを選択してください。</p>
+        <h2>ここは管理者トップ画面です</h2>
+        <p style="font: bolder 1.6rem sans-serif;">画面上部にあるヘッダーから希望のアクションを選択してください。</p>
       </div>
       <div class="tab-pane fade" id="nav-end-user" role="tabpanel" aria-labelledby="nav-end-user-tab">
-        <h2>ユーザー一覧です。</h2>
+        <h2>利用者一覧</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr class="end-user-table-head">
+              <th scope="col">ユーザー名</th>
+              <th scope="col">メールアドレス</th>
+              <th scope="col">クイズスコア</th>
+              <th scope="col">退会ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+          　<% @end_users.each do |end_user| %>
+            　<tr class="end-user-record">
+                <td><%= end_user.name %></td>
+                <td><%= end_user.email %></td>
+                <td>
+                  <% if end_user.quiz_score %>
+                    <%= end_user.quiz_score %>
+                  <% else %>
+                    未回答
+                  <% end %>
+                </td>
+                <td style="color: lightgreen;">有効</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <div class="tab-pane fade" id="nav-quiz" role="tabpanel" aria-labelledby="nav-quiz-tab">
-        <h2>クイズ管理画面です</h2>
+        <h2>クイズ管理</h2>
       </div>
     </div>
   <% else %>
