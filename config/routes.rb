@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   end
   namespace :admin_users do
     get '/', to: 'home#top'
+    resources :quizes, only: [:index, :create, :destroy]
   end
 end

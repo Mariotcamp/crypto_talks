@@ -1,17 +1,45 @@
-<header class="flex logo-left">
-  <img src="/assets/logo_transparent.png" alt="ロゴ">
-  <nav>
-    <% if logged_in? %>
-      <ul class="header-nav">
-        <a href="#">このクイズについて</a><!--ここはid属性をつけてクリックしたら画面の下に飛ぶようにする-->
-        <%= link_to 'ログアウト', logout_path, method: :delete %>
-      </ul>
-    <% else %>
+<% if logged_in? %>
+  <% if current_end_user.admin? %>
+    <nav class="admin-top">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-top-tab" data-toggle="tab" href="#nav-top" role="tab" aria-controls="nav-top" aria-selected="true"><img src="/assets/logo_transparent.png" alt="ロゴ" style="width: 22rem; height: 6.5rem; margin: 0.75rem 0 0 3%;"></a>
+        <a class="nav-item nav-link" id="nav-end-user-tab" data-toggle="tab" href="#nav-end-user" role="tab" aria-controls="nav-end-user" aria-selected="false">利用者の一覧</a>
+        <a class="nav-item nav-link" id="nav-quiz-tab" data-toggle="tab" href="#nav-quiz" role="tab" aria-controls="nav-quiz" aria-selected="false">クイズ管理</a>
+        <a data-confirm="本当にログアウトしますか？" rel="nofollow" data-method="delete" href="/logout" style="color: #ff4f4f; display: block; padding: 0.5rem 1rem;">ログアウト</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-top" role="tabpanel" aria-labelledby="nav-top-tab">
+        <h2>ここは管理者トップ画面です。</h2>
+        <p>画面上部にあるナビゲーションバーから希望のアクションを選択してください。</p>
+      </div>
+      <div class="tab-pane fade" id="nav-end-user" role="tabpanel" aria-labelledby="nav-end-user-tab">
+        <h2>ユーザー一覧です。</h2>
+      </div>
+      <div class="tab-pane fade" id="nav-quiz" role="tabpanel" aria-labelledby="nav-quiz-tab">
+        <h2>クイズ管理画面です</h2>
+      </div>
+    </div>
+  <% else %>
+    <header class="flex logo-left">
+      <img src="/assets/logo_transparent.png" alt="ロゴ">
+      <nav>
+        <ul class="header-nav">
+          <a href="#">このクイズについて</a><!--ここはid属性をつけてクリックしたら画面の下に飛ぶようにする-->
+          <%= link_to 'ログアウト', logout_path, method: :delete %>
+        </ul>
+      </nav>
+    </header>
+  <% end %>
+<% else %>
+  <header class="flex logo-left">
+    <img src="/assets/logo_transparent.png" alt="ロゴ">
+    <nav>
       <ul class="header-nav">
         <a href="#">このサービスについて</a><!--ここはid属性をつけてクリックしたら画面の下に飛ぶようにする-->
         <a href="/login">サインイン</a>
         <a href="/end_users/new">さっそくはじめる</a>
       </ul>
-    <% end %>
-  </nav>
-</header>
+    </nav>
+  </header>
+<% end %>
