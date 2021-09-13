@@ -25,15 +25,15 @@
           <% if end_user.is_available %>
             <td class="dropdown">
               <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style="color: lightgreen;">有効</span></a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a href="/admin_users/ban/<%= end_user.id %>" data-method="post">無効にする</a>
+              <div class="dropdown-menu" id="admin-withdraw-button" aria-labelledby="dropdownMenuButton">
+                <a href="/admin_users/ban/<%= end_user.id %>" data-method="post" style="color: #007bff">無効にする</a>
               </div>
             </td>
           <% else %>
            <td class="dropdown">
               <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style="color: red;">無効</span></a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a href="/admin_users/recover/<%= end_user.id %>" data-method="post">有効にする</a>
+              <div class="dropdown-menu" id="admin-withdraw-button" aria-labelledby="dropdownMenuButton">
+                <a href="/admin_users/recover/<%= end_user.id %>" data-method="post" style="color: #007bff;">有効にする</a>
               </div>
             </td>
           <% end %>
