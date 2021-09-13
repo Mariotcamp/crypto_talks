@@ -1,5 +1,5 @@
 class EndUsers::EndUsersController < ApplicationController
-  before_action :logged_in_end_user, only: [:show, :edit, :update]
+  before_action :logged_in_end_user, only: [:show, :edit, :update, :following, :followers, :withdraw]
   before_action :correct_current_end_user, only: [:edit, :update]
   def new
     @end_user = EndUser.new
@@ -39,6 +39,18 @@ class EndUsers::EndUsersController < ApplicationController
   def followers
     @end_user = EndUser.find(params[:id])
     @follower_end_users = @end_user.followers
+  end
+
+  def withdraw
+    end_user = EndUser.find(params[:id])
+    if end_user == current_end_user
+      end_user.update_attribute(:is_available, false)
+      end_user.save
+      log_out if logged_in?
+      redirect_to root_path
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

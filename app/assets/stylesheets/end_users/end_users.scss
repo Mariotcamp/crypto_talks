@@ -92,19 +92,29 @@
     border-radius: 50%;
   }
 }
-.end_user_name{
+.end-user-name-edit-withdraw{
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+.end-user-name{
   font: bolder 2rem sans-serif;
-  a{
-    position: absolute;
-    right: 50px;
-    padding: 5px;
-    border: solid 1.5px #e6e6e6;
-    border-radius: 15px;
-  }
-  a:hover{
+  margin-right: auto;
+  margin-bottom: 0;
+}
+.edit-profile-button, .end-user-withdraw-button{
+  font: bolder 12px sans-serif;
+  padding: 5px;
+  margin-left: 10px;
+  border: solid 1.5px #e6e6e6;
+  border-radius: 15px;
+  &:hover{
     color: black;
     background-color: #e6e6e6;
   }
+}
+.end-user-withdraw-button:hover{
+  color: red;
+  background-color: #ffcece;
 }
 .profile-sentence{
   font: 1.5rem sans-serif;
