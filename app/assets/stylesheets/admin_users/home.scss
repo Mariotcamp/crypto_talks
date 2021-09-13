@@ -3,35 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //topアクション画面のcss
-#nav-tab{
-  border: none;
-  line-height: 80px;
-  justify-content: flex-end;
-  &:hover{
-    border: none;
-  }
-}
-#nav-top-tab,#nav-end-user-tab,#nav-quiz-tab{
-  border: none;
-  &:hover{
-    border: none;
-  }
-}
 .admin-top{
   a{
     font: bolder 1.5rem/80px sans-serif;
     margin-right: 50px;
+    padding: 0.5rem 1rem;
     color: #0a77ff;
   }
   a:first-child{
     margin-right: auto;
   }
 }
-#nav-tabContent{
+#admin-content{
   width: 75%;
   margin: 0 auto;
-}
-.tab-pane{
   h2{
     font-weight: bolder;
     color: #9500af;

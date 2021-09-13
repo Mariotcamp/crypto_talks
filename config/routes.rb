@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :end_users do
       member do
         get :following, :followers
+        post :withdraw
       end
     end
     resources :posts, only: [:create, :show, :edit, :update, :destroy] do
@@ -25,5 +26,8 @@ Rails.application.routes.draw do
   namespace :admin_users do
     get '/', to: 'home#top'
     resources :quizes, only: [:index, :create, :destroy]
+    resources :end_users, only: [:index]
+    post '/recover/:id', to: 'end_users#recover'
+    post '/ban/:id', to: 'end_users#ban'
   end
 end

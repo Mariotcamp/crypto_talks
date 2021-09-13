@@ -1,0 +1,44 @@
+<%= render '/shared/header' %>
+<div id="admin-content">
+  <h2>利用者一覧</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr class="end-user-table-head">
+        <th scope="col">ユーザー名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">クイズスコア</th>
+        <th scope="col">退会ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @end_users.each do |end_user| %>
+      　<tr class="end-user-record">
+          <td><%= end_user.name %></td>
+          <td><%= end_user.email %></td>
+          <td>
+            <% if end_user.quiz_score %>
+              <%= end_user.quiz_score %>
+            <% else %>
+              未回答
+            <% end %>
+          </td>
+          <% if end_user.is_available %>
+            <td class="dropdown">
+              <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style="color: lightgreen;">有効</span></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a href="/admin_users/ban/<%= end_user.id %>" data-method="post">無効にする</a>
+              </div>
+            </td>
+          <% else %>
+           <td class="dropdown">
+              <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style="color: red;">無効</span></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a href="/admin_users/recover/<%= end_user.id %>" data-method="post">有効にする</a>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

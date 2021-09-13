@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def finished_log_in_as_admin
+    unless current_end_user.admin?
+      redirect_to root_path
+    end
+  end
+
   def finished_log_in
     if logged_in?
       redirect_to midroom_path
