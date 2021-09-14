@@ -17,22 +17,30 @@ class EndUsers::QuizesController < ApplicationController
     @quizes.each do |quiz|
       quiz_num = "quiz#{num}".intern
       num += 1
-      answer_num = params[quiz_num][:answer_num]
-      if answer_num.to_i == quiz.answer_number
-        current_end_user.quiz_score += 1
+      if answer_num = params.dig(quiz_num, :answer_num)
+        if answer_num.to_i == quiz.answer_number
+          current_end_user.quiz_score += 1
+        end
+      else
+        @error = 1
+        flash[:danger] = "未回答のクイズがあります。全てのクイズに回答してください"
+        redirect_to quizes_path
+        break
       end
     end
-    current_end_user.update_attribute(:quiz_score, current_end_user.quiz_score)
-    score = current_end_user.quiz_score
-    if score <= 3
-      redirect_to lowroom_path
-    elsif score <= 6
-      redirect_to midroom_path
-    elsif score <= 8
-      redirect_to upperroom_path
-    else
-      flash[:danger] = "無効なスコア。もう一度クイズに答えてください"
-      current_end_user.update_attribute(:quiz_score, null)
+    unless @error
+      current_end_user.update_attribute(:quiz_score, current_end_user.quiz_score)
+      score = current_end_user.quiz_score
+      if score <= 3
+        redirect_to lowroom_path
+      elsif score <= 6
+        redirect_to midroom_path
+      elsif score <= 8
+        redirect_to upperroom_path
+      else
+        flash[:danger] = "無効なスコア。もう一度クイズに答えてください"
+        current_end_user.update_attribute(:quiz_score, null)
+      end
     end
   end
 
