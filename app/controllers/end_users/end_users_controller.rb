@@ -20,6 +20,7 @@ class EndUsers::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
+    @posts = @end_user.posts.order(id: "DESC")
   end
 
   def edit

@@ -15,6 +15,48 @@
     </div>
     <%= render '/shared/follow_stats.html.erb' %>
     <p class="profile-sentence"><%= @end_user.profile %></p>
+    <div class="posting" id="end-user-show-posting">
+      <% if @posts %>
+        <% @posts.each do |post| %>
+          <div class="card">
+            <div class="card-body">
+              <div class="post_end_user flex">
+                <% if post.end_user.image.attached? %>
+                  <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><%= image_tag post.end_user.image %></a></div>
+                <% else %>
+                  <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
+                <% end %>
+                <h2 class="post_end_user_name"><a href="/end_users/<%= post.end_user.id %>"><%= post.end_user.name %></a><br><p><%= post.sentence %></p></h2>
+                <% if post.end_user.id == current_end_user.id %>
+                  <div class="dropdown posting-dropdown">
+                    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="/posts/<%= post.id %>/edit"><i class="fas fa-edit"></i>　編集</a>
+                      <a data-confirm="本当に削除しますか？この操作は取り消せません。" class="dropdown-item" href="/posts/<%= post.id %>" data-method="delete"><i class="fas fa-trash-alt"></i>　削除</a>
+                    </div>
+                  </div>
+                <% end %>
+                <p class="posting-time"><%= time_ago_in_words(post.updated_at) %>前</p>
+              </div>
+              <div class="post-bottom-layer flex">
+                <div class="comment-link">
+                  <a class="post-comment" href="/posts/<%= post.id %>"><i class="far fa-comment" style="font-size: 17px;"></i> <%= post.comments.count %></a>
+                </div>
+                <div class="favorite-link favorite-post<%= post.id %>">
+                  <% if post.have_favorite?(current_end_user) %>
+                    <%= render '/shared/destroy_favorite_button', post: post %>
+                  <% else %>
+                    <%= render '/shared/create_favorite_button', post: post %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="right-content">
 
