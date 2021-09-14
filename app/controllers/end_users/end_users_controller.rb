@@ -1,6 +1,7 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :logged_in_end_user, only: [:show, :edit, :update, :following, :followers, :withdraw]
   before_action :correct_current_end_user, only: [:edit, :update]
+  before_action :quiz_is_available?, only: [:create]
   def new
     @end_user = EndUser.new
   end
@@ -62,6 +63,14 @@ class EndUsers::EndUsersController < ApplicationController
       @end_user = EndUser.find(params[:id])
       unless @end_user.id == current_end_user.id
         redirect_back(fallback_location: root_path)
+      end
+    end
+
+    def quiz_is_available?
+      quizes = Quiz.all
+      if quizes.count < 8
+        flash[:danger] = "現在クイズのメンテナンス中です。少々お待ちください"
+        redirect_to new_end_user_path
       end
     end
 end

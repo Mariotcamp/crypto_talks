@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
   namespace :admin_users do
     get '/', to: 'home#top'
-    resources :quizes, only: [:index, :create, :destroy]
+    resources :quizes, only: [:index, :new, :create, :destroy]
     resources :end_users, only: [:index]
     post '/recover/:id', to: 'end_users#recover'
     post '/ban/:id', to: 'end_users#ban'

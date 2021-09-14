@@ -1,5 +1,5 @@
 class AdminUsers::EndUsersController < ApplicationController
-before_action :finished_log_in_as_admin
+before_action :finished_log_in_as_admin, :confirm_number_of_quizes
 
   def index
     @end_users = EndUser.where(admin: false)

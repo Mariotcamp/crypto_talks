@@ -1,4 +1,23 @@
 <%= render '/shared/header' %>
 <div id="admin-content">
-  <h2>クイズ管理</h2>
+  <h2 style="margin:0  0 10px 150px;">クイズ管理</h2>
+  <% num = 1 %>
+    <% @quizes.each do |quiz| %>
+    <div class="quiz-content">
+      <div class="card">
+        <div class="card-body">
+          <div class="flex">
+            <p class="card-body quiz-question"><%= num %>、<%= quiz.question %></p>
+            <p class="card-body" style="text-align: center;"><a class="quiz-trash-logo" href="/admin_users/quizes/<%= quiz.id %>" data-method="delete" data-confirm="【確認】クイズを削除しますか？"><i class="fas fa-trash"></i></a></p>
+          </div>
+        <div class="form-radio">
+          <label class="form-check-label" for="question-<%= num %>-answer_number-1"><p class="option-item"><%= quiz.option1 %></p></label><br>
+          <label class="form-check-label" for="question-<%= num %>-answer_number-2"><p class="option-item"><%= quiz.option2 %></p></label><br>
+          <label class="form-check-label" for="question-<%= num %>-answer_number-3"><p class="option-item"><%= quiz.option3 %></p></label><br>
+          <label class="form-check-label" for="question-<%= num %>-answer_number-4"><p class="option-item"><%= quiz.option4 %></p></label><br>
+        </div>
+      </div>
+    </div>
+    <% num += 1 %>
+  <% end %>
 </div>
