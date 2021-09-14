@@ -1,0 +1,26 @@
+<%= render '/shared/header' %>
+<div id="admin-content">
+  <%= flash[:danger] %>
+  <h2 style="margin:0  0 40px 150px;">クイズ作成</h2>
+  <div class="quiz-content">
+    <div class="card">
+      <div class="card-body">
+        <%= form_with(model: @quiz, url: admin_users_quizes_path, local: true) do |f| %>
+          <p class="quiz-new">問題文</p>
+          <%= f.text_field :question, size:"70", class:"quiz-new-form" %>
+          <p class="quiz-new">選択肢１</p>
+          <%= f.text_field :option1, size:"70", class:"quiz-new-form" %>
+          <p class="quiz-new">選択肢２</p>
+          <%= f.text_field :option2, size:"70", class:"quiz-new-form" %>
+          <p class="quiz-new">選択肢３</p>
+          <%= f.text_field :option3, size:"70", class:"quiz-new-form" %>
+          <p class="quiz-new">選択肢４</p>
+          <%= f.text_field :option4, size:"70", class:"quiz-new-form" %>
+          <p class="quiz-new">回答番号</p>
+          <%= f.select :answer_number, [[1,1], [2,2], [3,3], [4,4]], include_blank: "選択して下さい", class:"answer-num-select" %>
+          <p style="text-align: center;"><%= f.submit '作成', class:"quiz-create-button" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

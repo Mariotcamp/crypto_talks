@@ -1,3 +1,38 @@
 // Place all the styles related to the admin_users::quizes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//indexのscss
+.quizes-table-head{
+  font: bolder 2.1rem sans-serif;
+}
+.quiz-trash-logo{
+  line-height: 17px;
+  font-size: 3rem;
+  color: #007bff;
+}
+
+//newのscss
+.quiz-new{
+  font-size: 1.5rem;
+}
+.quiz-new-form{
+  font-size: 1.7rem;
+  padding: 5px;
+  margin-left: 20px;
+}
+#quiz_answer_number{
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #edfaff;
+  box-shadow: -10;
+  margin-left: 20px;
+}
+.quiz-create-button{
+  padding: 7px 40px 7px 40px;
+  border: solid 2px #717171;
+  border-radius: 5px;
+  font: bolder 1.3rem sans-serif;
+  background-color: #0A77FF;
+  color: #fff;
+}

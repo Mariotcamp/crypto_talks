@@ -33,4 +33,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def confirm_number_of_quizes
+    @quiz = Quiz.all
+    if @quiz.count < 8
+      flash[:danger] = "クイズは常に8問用意してください"
+      redirect_to new_admin_users_quize_path
+    end
+  end
+
 end
