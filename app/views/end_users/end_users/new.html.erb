@@ -5,6 +5,9 @@
   <div class="title">
     <h1>まずはアカウント情報を入力してください</h1>
     <p><span>ユーザー名は</span>匿名でも構いません。</p>
+    <% if @quizes.count < 8 %>
+      <p>現在クイズのメンテナンス中です。しばらく時間を置いてから登録してください</p>
+    <% end %>
   </div>
   <div class="sign_up_log_in_flash"><%= render 'shared/flash_messages' %></div>
   <div class="error_messages"><%= render 'shared/error_messages' %></div>
