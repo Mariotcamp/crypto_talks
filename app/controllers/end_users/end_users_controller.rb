@@ -4,6 +4,7 @@ class EndUsers::EndUsersController < ApplicationController
   before_action :quiz_is_available?, only: [:create]
   def new
     @end_user = EndUser.new
+    @quizes = Quiz.all
   end
 
   def create
@@ -14,6 +15,7 @@ class EndUsers::EndUsersController < ApplicationController
       flash[:success] = "ユーザー登録に成功しました"
       redirect_to quizes_path
     else
+      @quizes = Quiz.all
       render 'new'
     end
   end

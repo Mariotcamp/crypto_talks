@@ -1,5 +1,6 @@
 class EndUsers::SessionsController < ApplicationController
   def new
+    @quizes = Quiz.all
   end
 
   def create
@@ -14,10 +15,12 @@ class EndUsers::SessionsController < ApplicationController
           quiz_is_available?
         end
       else
+        @quizes = Quiz.all
         flash.now[:danger] = "退会済みもしくは運営によってbanされたユーザーです"
         render 'new'
       end
     else
+      @quizes = Quiz.all
       flash.now[:danger] = "ユーザー名またはパスワードが正しくありません。"
       render 'new'
     end
@@ -30,8 +33,8 @@ class EndUsers::SessionsController < ApplicationController
 
   private
   def quiz_is_available?
-    quizes = Quiz.all
-    if quizes.count < 8
+    @quizes = Quiz.all
+    if @quizes.count < 8
       flash[:danger] = "現在クイズのメンテナンス中です。少々お待ちください"
       redirect_to login_path
     else
