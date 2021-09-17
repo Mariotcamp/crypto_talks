@@ -6,7 +6,8 @@
     <h1>まずはアカウント情報を入力してください</h1>
     <p><span>ユーザー名は</span>匿名でも構いません。</p>
   </div>
-  <div class="error_messages"><%= flash[:danger] %><%= render 'shared/error_messages' %></div>
+  <div class="sign_up_log_in_flash"><%= render 'shared/flash_messages' %></div>
+  <div class="error_messages"><%= render 'shared/error_messages' %></div>
   <div class="sign_up_form">
     <%= form_with(model: @end_user, local: true) do |f| %>
       <p>ユーザー名</p>

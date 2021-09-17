@@ -70,7 +70,7 @@ class EndUsers::EndUsersController < ApplicationController
     def quiz_is_available?
       quizes = Quiz.all
       if quizes.count < 8
-        flash[:danger] = "現在クイズのメンテナンス中です。少々お待ちください"
+        flash[:danger] = "現在クイズのメンテナンス中です。お手数ですが時間を空け再度情報入力をしてください。"
         redirect_to new_end_user_path
       end
     end
