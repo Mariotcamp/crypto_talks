@@ -10,7 +10,7 @@
     <% end %>
   </div>
   <div class="sign_up_log_in_flash"><%= render 'shared/flash_messages' %></div>
-  <div class="error_messages"><%= render 'shared/error_messages' %></div>
+  <div class="error_messages"><%= render 'shared/error_messages', obj: @end_user %></div>
   <div class="sign_up_form">
     <%= form_with(model: @end_user, local: true) do |f| %>
       <p>ユーザー名</p>

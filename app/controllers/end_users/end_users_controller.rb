@@ -15,6 +15,7 @@ class EndUsers::EndUsersController < ApplicationController
       flash[:success] = "ユーザー登録に成功しました"
       redirect_to quizes_path
     else
+      flash.now[:danger] = "フォームの入力に誤りがあります"
       @quizes = Quiz.all
       render 'new'
     end
@@ -31,8 +32,12 @@ class EndUsers::EndUsersController < ApplicationController
 
   def update
     @end_user = EndUser.find(params[:id])
-    @end_user.update!(end_user_params)
-    redirect_to end_user_path(@end_user)
+    if @end_user.update(end_user_params)
+      redirect_to end_user_path(@end_user)
+    else
+      flash[:danger] = "名前は入力されているか、それぞれ文字数制限を満たしているか確認してください"
+      redirect_to edit_end_user_path
+    end
   end
 
   def following

@@ -1,8 +1,9 @@
 <%= render '/shared/header' %>
 <div id="admin-content">
-  <%= flash[:danger] %>
   <h2 style="margin:0  0 40px 150px;">クイズ作成</h2>
   <div class="quiz-content">
+    <%= render '/shared/flash_messages' %>
+    <%= render '/shared/error_messages', obj: @quiz %>
     <div class="card">
       <div class="card-body">
         <%= form_with(model: @quiz, url: admin_users_quizes_path, local: true) do |f| %>

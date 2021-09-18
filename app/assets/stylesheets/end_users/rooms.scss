@@ -114,6 +114,11 @@
   .post-form{
     width: 100%;
     margin-left: 10px;
+    .post-form-content{
+      &::-webkit-input-placeholder{
+        color:#ff6161;
+      }
+    }
     #post-sentence {
       width: 80%;
       height: 30px;

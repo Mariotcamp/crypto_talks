@@ -2,9 +2,11 @@
   <%= render '/shared/left-content' %>
   <div class="center-content">
     <%= form_with(model: @end_user, local: true) do |f| %>
-      <p><%= f.file_field :image %></p>
-      <p><%= f.text_field :name , :size=>"30"%></p>
-      <p><%= f.text_area :profile , :size=>"40x3"%></p>
+      <p><%= f.label :image, "画像をアップロード", class: "image-input-btn" %></p>
+      <p><%= f.file_field :image, class: "image-form" %></p>
+      <%= render '/shared/flash_messages' %>
+      <p><%= f.text_field :name , :size=>"30", placeholder: "20字以内で設定しよう"%></p>
+      <p><%= f.text_area :profile , :size=>"40x3", placeholder: "150字以内で自分を表現しよう" %></p>
       <%= f.submit '編集を保存する', class: "update-submit-button" %>
     <% end %>
   </div>

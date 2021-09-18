@@ -1,2 +1,3 @@
 $(".comment-content").html("<%= escape_javascript(render('/shared/comment_content', comments: @comments)) %>");
 $("#comment_sentence").val('')
+$('#comment-error-explanation').remove();

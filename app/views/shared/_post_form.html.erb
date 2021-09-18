@@ -6,7 +6,11 @@
   <% end %>
   <div class="post-form">
     <%= form_with(model: post, local: true) do |f| %>
-      <textarea placeholder="みんなで話そう" name="post[sentence]" id="post-sentence" wrap="soft"></textarea>
+      <% if @post.errors.any? %>
+        <textarea placeholder="何か入力しましょう" name="post[sentence]" id="post-sentence" wrap="soft" class="post-form-content"></textarea>
+      <% else %>
+        <textarea placeholder="150字以内で何か話そう" name="post[sentence]" id="post-sentence" wrap="soft"></textarea>
+      <% end %>
       <%= f.hidden_field :end_user_id, :value => current_end_user.id %>
       <%= f.button :type => "submit", class: "post-button" do %>
         <i class="far fa-paper-plane"></i>
