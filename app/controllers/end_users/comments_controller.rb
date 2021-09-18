@@ -1,17 +1,17 @@
 class EndUsers::CommentsController < ApplicationController
 
   def create
-    post = Post.find(params[:post_id])
-    @comments = post.comments.order(id: "DESC")
-    comment = current_end_user.comments.new(comment_params)
-    comment.post_id = post.id
-    if comment.save
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.order(id: "DESC")
+    @comment = current_end_user.comments.new(comment_params)
+    @comment.post_id = @post.id
+    if @comment.save
       respond_to do |format|
         format.js
       end
     else
-      #エラーメッセージorフラッシュメッセージで知らせる
-      redirect_back(fallback_location: root_path)
+      flash[:danger] = "コメントが空でないこと、文字数制限(150字以内)を満たしているか確認してください"
+      render :js => "window.location = '/posts/#{@post.id}'"
     end
   end
 

@@ -35,3 +35,20 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+
+ja:
+  activerecord:
+    attributes:
+      end_user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード再確認用
+        profile: プロフィール
+      quiz:
+        question: 問題文
+        option1: 選択肢１
+        option2: 選択肢２
+        option3: 選択肢３
+        option4: 選択肢４
+        answer_number: 解答番号

@@ -4,8 +4,23 @@ before_action :correct_post_end_user, only: [:edit, :update]
   def create
     @post = Post.new(post_params)
     @post.end_user_quiz_score = current_end_user.quiz_score
-    @post.save
-    redirect_back(fallback_location: root_path)
+    if @post.save
+      redirect_to midroom_path
+    else
+      if current_end_user.quiz_score == 0..3
+        @end_user = current_end_user
+        @posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC")
+        render '/end_users/rooms/lowroom'
+      elsif current_end_user.quiz_score == 4..6
+        @end_user = current_end_user
+        @posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC")
+        render '/end_users/rooms/midroom'
+      else
+        @end_user = current_end_user
+        @posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC")
+        render '/end_users/rooms/upperroom'
+      end
+    end
   end
 
   def show
@@ -23,7 +38,8 @@ before_action :correct_post_end_user, only: [:edit, :update]
     if @post.update(post_params)
       redirect_to midroom_path
     else
-      redirect_back(fallback_location: root_path) #もしかしたらこれでfield_with_errorsの問題が解決したかも。あとは上に１行フラッシュメッセージを追加しよう。
+      flash[:danger] = "空のフォーム、文字数over(150字以上)は送信できません"
+      redirect_to edit_post_path
     end
   end
 
