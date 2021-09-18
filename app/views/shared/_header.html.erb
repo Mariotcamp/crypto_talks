@@ -14,8 +14,7 @@
       <img src="/assets/logo_transparent.png" alt="ロゴ">
       <nav>
         <ul class="header-nav">
-          <a href="#">このクイズについて</a><!--ここはid属性をつけてクリックしたら画面の下に飛ぶようにする-->
-          <%= link_to 'ログアウト', logout_path, method: :delete %>
+          <%= link_to 'ログアウト', logout_path, method: :delete, class: "quiz-log-out-button" %>
         </ul>
       </nav>
     </header>
