@@ -140,7 +140,7 @@
   line-height: 26px;
   position: absolute;
   right: 8%;
-  margin-top: 2px;
+  margin-top: 15px;
   padding: 5px 15px;
   border-radius: 15px;
   border: none;
@@ -154,6 +154,25 @@
 #end-user-show-posting{
   height: 485px;
   min-height: 485px;
+}
+.end-user-room-level{
+  span{
+    font: bolder 1.2rem sans-serif;
+    padding: 6px;
+    border-radius: 10px;
+  }
+  .low-level{
+    background-color: red;
+    box-shadow: 0px 0px 3px red;
+  }
+  .mid-level{
+    background-color: #ffef2a;
+    box-shadow: 0px 0px 10px #ffef2a;
+  }
+  .upper-level{
+    background-color: #86c7ff;
+    box-shadow: 0px 0px 4px #86c7ff;
+  }
 }
 //以下エンドユーザーのedit画面のcss
 
@@ -228,10 +247,21 @@
   h2{
     font: bolder 1.7rem sans-serif;
     p{
-      font: 1.5rem sans-serif;
+      font: bolder 1.5rem sans-serif;
+      margin: 20px 0 0 10px;
     }
   }
 }
 .following_followers_view{
   right: 28%;
+}
+#follow-profile{
+  font: 1.5rem sans-serif;
+  margin-top: 20px;
+}
+
+//followersのcss
+#follower-profile{
+  font: 1.5rem sans-serif;
+  margin-top: 20px;
 }

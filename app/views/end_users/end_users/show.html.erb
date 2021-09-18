@@ -13,6 +13,17 @@
         <%= link_to 'アカウント削除', withdraw_end_user_path(@end_user), method: :post, data: {confirm: "【確認】アカウントを削除しますか？\n(再度このアカウントでログインすることはできなくなります)"}, class: "end-user-withdraw-button" %>
       <% end %>
     </div>
+    <% if @end_user.quiz_score %>
+      <div class="end-user-room-level">
+        <% if @end_user.quiz_score <= 3 %>
+          <span class="low-level">Low</span>
+        <% elsif @end_user.quiz_score <= 6 %>
+          <span class="mid-level">Middle</span>
+        <% else %>
+          <span class="upper-level">Upper</span>
+        <% end %>
+      </div>
+    <% end %>
     <%= render '/shared/follow_stats.html.erb' %>
     <p class="profile-sentence"><%= @end_user.profile %></p>
     <div class="posting" id="end-user-show-posting">

@@ -13,8 +13,8 @@
           <div class="rel-follow-img profile-image"><img src="/assets/no_image.jpg"></div>
         <% end %>
         <h2>
-          <%= follower_end_user.name %><br>
-          <p><%= follower_end_user.profile %></p>
+          <p><%= follower_end_user.name %></p>
+          <p id="follower-profile"><%= follower_end_user.profile %></p>
         </h2>
         <% if @end_user == current_end_user %>
           <% unless follower_end_user == current_end_user %>
