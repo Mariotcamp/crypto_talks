@@ -23,6 +23,10 @@
           <span class="upper-level">Upper</span>
         <% end %>
       </div>
+    <% else %>
+      <div class="end-user-room-level">
+        <span class="no-level">No-Level</span>
+      </div>
     <% end %>
     <%= render '/shared/follow_stats.html.erb' %>
     <p class="profile-sentence"><%= @end_user.profile %></p>

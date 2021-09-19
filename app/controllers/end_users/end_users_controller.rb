@@ -42,12 +42,13 @@ class EndUsers::EndUsersController < ApplicationController
 
   def following
     @end_user = EndUser.find(params[:id])
-    @following_end_users = @end_user.following
+    @following_end_users = @end_user.active_relationships.order(:relationship, id: "DESC").map{|relationship| relationship.followed}
+
   end
 
   def followers
     @end_user = EndUser.find(params[:id])
-    @follower_end_users = @end_user.followers
+    @follower_end_users = @end_user.passive_relationships.order(:relationship, id: "DESC").map{|relationship| relationship.follower}
   end
 
   def withdraw
