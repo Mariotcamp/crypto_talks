@@ -5,6 +5,7 @@ class EndUsers::RoomsController < ApplicationController
     @post = Post.new
     @posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC")
     @end_user = current_end_user
+    @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
 
   def midroom
@@ -12,6 +13,7 @@ class EndUsers::RoomsController < ApplicationController
     @post = Post.new
     @posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC")
     @end_user = current_end_user
+    @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
 
   def upperroom
@@ -19,6 +21,7 @@ class EndUsers::RoomsController < ApplicationController
     @post = Post.new
     @posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC")
     @end_user = current_end_user
+    @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
 
   private

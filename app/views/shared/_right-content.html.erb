@@ -1,0 +1,29 @@
+<div class="follower-ranking">
+  <h2><i class="fas fa-star"></i>フォロワーランキング<i class="fas fa-star"></i><br><span>（同立フォロワー数だとうまく表示されないことがあります）<span></h2>
+  <% ranking_end_users.each.with_index(1) do |ranking_end_user, i| %>
+    <% if i == 1 %>
+      <p class="first-ranking"><i class="fas fa-crown"></i>第<%= i %>位
+        <span style="color: black;">　<%= ranking_end_user.followers.count %>フォロワー</span>
+      </p>
+    <% elsif i == 2 %>
+      <p class="second-ranking"><i class="fas fa-chess-queen"></i>第<%= i %>位
+        <span style="color: black;">　<%= ranking_end_user.followers.count %>フォロワー</span>
+      </p>
+    <% else %>
+      <p class="third-ranking"><i class="far fa-thumbs-up"></i>第<%= i %>位
+        <span style="color: black;">　<%= ranking_end_user.followers.count %>フォロワー</span>
+      </p>
+    <% end %>
+    <div class="ranking-end-user flex">
+      <% if ranking_end_user.image.attached? %>
+        <div style="margin-left: 20px;"><a href="/end_users/<%= ranking_end_user.id %>"><%= image_tag ranking_end_user.image, class: "ranking-end-user-image" %></a></div>
+      <% else %>
+        <div style="margin-left: 20px;"><a href="/end_users/<%= ranking_end_user.id %>"><img src="/assets/no_image.jpg" class="ranking-end-user-image"></a></div>
+      <% end %>
+      <p class="name">
+        <%= ranking_end_user.name %>
+        <a class="link" href="/end_users/<%= ranking_end_user.id %>"></a>
+      </p>
+    </div>
+  <% end %>
+</div>
