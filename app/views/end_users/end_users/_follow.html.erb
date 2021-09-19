@@ -1,4 +1,4 @@
 <%= form_with(model: current_end_user.active_relationships.build, remote: true) do |f| %>
   <%= f.hidden_field :followed_id, :value => end_user.id %>
-  <%= f.submit "フォロー", class: "follow-rel-button" %>
+  <%= f.submit "フォロー", class: "follow-rel-button", id: "end-user-follow-rel-button-show" %>
 <% end %>
