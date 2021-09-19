@@ -7,11 +7,11 @@ before_action :correct_post_end_user, only: [:edit, :update]
     if @post.save
       redirect_to midroom_path
     else
-      if current_end_user.quiz_score == 0..3
+      if current_end_user.quiz_score <= 3
         @end_user = current_end_user
         @posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC")
         render '/end_users/rooms/lowroom'
-      elsif current_end_user.quiz_score == 4..6
+      elsif current_end_user.quiz_score <= 6
         @end_user = current_end_user
         @posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC")
         render '/end_users/rooms/midroom'
