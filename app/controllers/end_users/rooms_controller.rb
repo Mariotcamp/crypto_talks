@@ -3,7 +3,7 @@ class EndUsers::RoomsController < ApplicationController
   def lowroom
     low_judge
     @post = Post.new
-    @posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC")
+    @posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:comments, :favorites)
     @end_user = current_end_user
     @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
@@ -11,7 +11,7 @@ class EndUsers::RoomsController < ApplicationController
   def midroom
     mid_judge
     @post = Post.new
-    @posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC")
+    @posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:comments, :favorites)
     @end_user = current_end_user
     @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
@@ -19,7 +19,7 @@ class EndUsers::RoomsController < ApplicationController
   def upperroom
     upper_judge
     @post = Post.new
-    @posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC")
+    @posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC").includes(:comments, :favorites)
     @end_user = current_end_user
     @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
