@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/lowroom', to: 'rooms#lowroom'
     get '/midroom', to: 'rooms#midroom'
     get '/upperroom', to: 'rooms#upperroom'
+    get '/search', to: 'serches#index'
   end
   namespace :admin_users do
     get '/', to: 'home#top'

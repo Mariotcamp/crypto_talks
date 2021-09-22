@@ -1,0 +1,14 @@
+<div class="talk-room flex">
+  <%= render '/shared/left-content' %>
+  <div class="center-content">
+    <p class="major-coin-search-result">主要コイン別検索結果一覧</p>
+    <%= render '/shared/flash_messages' %>
+    <%= render '/shared/center-content', posts: @posts %>
+    <% if @posts.any? %>
+      <p class="major-coin-search-result-count">合計<%= @posts.count %>件の投稿にhitしました。</p>
+    <% end %>
+  </div>
+  <div class="right-content">
+    <%= render '/shared/right-content', ranking_end_users: @ranking_end_users %>
+  </div>
+</div>
