@@ -10,7 +10,7 @@ class EndUsers::SessionsController < ApplicationController
         if @end_user.quiz_score || @end_user.admin?
           log_in @end_user
           params[:session][:remember_me] == '1'? remember(@end_user) : forget(@end_user)
-          redirect_to quizes_path
+          redirect_to midroom_path
         else
           quiz_is_available?
         end
