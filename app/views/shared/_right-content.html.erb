@@ -37,5 +37,14 @@
   <p class="quiz-retry-button">クイズに再挑戦する<a href="/quizes" class="quiz-retry-button-content"></a></p>
 </div>
 <% else %>
-  <p>アッパールームの実装は少々お待ちください。</p>
+  <p class="major-coin-serch">主要コイン別投稿検索</p>
+  <table class="table table-hover">
+    <tbody>
+      <tr><td class="major-coin-name">BTC<%= link_to '', search_path(coin: "btc"), class: "major-coin-link" %></td></tr>
+      <tr><td class="major-coin-name">ETH<%= link_to '', search_path(coin: "eth"), class: "major-coin-link" %></td></tr>
+      <tr><td class="major-coin-name">BNB<%= link_to '', search_path(coin: "bnb"), class: "major-coin-link" %></td></tr>
+      <tr><td class="major-coin-name">XRP<%= link_to '', search_path(coin: "xrp"), class: "major-coin-link" %></td></tr>
+      <tr><td class="major-coin-name">LOST<%= link_to '', search_path(coin: "lost"), class: "major-coin-link" %></td></tr>
+    </tbody>
+  </table>
 <% end %>

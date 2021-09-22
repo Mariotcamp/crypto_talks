@@ -1,6 +1,7 @@
 <div class="talk-room flex">
   <%= render '/shared/left-content' %>
   <div class="center-content">
+    <%= render '/shared/post_view_title' %>
     <%= render '/shared/center-content', {post: @post, posts: @posts} %>
     <%= render '/shared/post_form', post: @post %>
   </div>
