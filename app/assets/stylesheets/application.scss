@@ -52,3 +52,23 @@ a:hover {
   margin: 20px auto;
 }
 
+/*ページネーション自体のデザイン*/
+.pagination{
+  margin: 15px 0 0 0;
+}
+.pagination>li>a {
+  border: none;
+  color: #696969;
+  font-size: 15px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 50%;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 50%;
+}
