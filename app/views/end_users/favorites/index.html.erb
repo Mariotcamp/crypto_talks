@@ -3,6 +3,7 @@
   <div class="center-content">
     <%= render '/shared/post_view_title' %>
     <%= render '/shared/center-content', {post: @post, posts: @posts} %>
+    <%= paginate @posts %>
   </div>
   <div class="right-content">
     <%= render '/shared/right-content', ranking_end_users: @ranking_end_users %>
