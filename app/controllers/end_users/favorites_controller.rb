@@ -2,7 +2,7 @@ class EndUsers::FavoritesController < ApplicationController
 
   def index
     favorites = Favorite.where(end_user_id: current_end_user.id).includes(:post)
-    @posts = favorites.map{|favorite| favorite.post}
+    @posts = favorites.order(id: "DESC").map{|favorite| favorite.post}
     @post = Post.new
     @end_user = current_end_user
     @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
