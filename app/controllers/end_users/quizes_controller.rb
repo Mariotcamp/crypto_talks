@@ -2,16 +2,20 @@ class EndUsers::QuizesController < ApplicationController
   before_action :logged_in_end_user, :admin_user?
 
   def take
+    @quizes = Quiz.all
     @end_user = current_end_user
     if @end_user.quiz_score.nil?
-      @quizes = Quiz.all
+      #クイズ画面へ遷移
     else
       num = @end_user.posts.count
       if num <= 9
         flash[:danger] = "投稿数が" + (10 - num ).to_s + "件不足しています"
         redirect_to lowroom_path
+      elsif @quizes.count < 8
+        flash[:danger] = "現在クイズのメンテナンスをしています。しばらく時間を置いてから再度挑戦してください。"
+        redirect_to lowroom_path
       else
-        @quizes = Quiz.all
+        #クイズ画面へ遷移
       end
     end
   end
