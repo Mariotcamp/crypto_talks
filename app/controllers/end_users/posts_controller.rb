@@ -10,15 +10,24 @@ before_action :correct_post_end_user, only: [:edit, :update]
       @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
       if current_end_user.quiz_score <= 3
         @end_user = current_end_user
-        @posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:end_user, :favorites, :comments)
+        from = (Time.zone.now - 7.day)
+        to = Time.zone.now
+        posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:end_user, :favorites, :comments)
+        @posts = posts.where(created_at: from...to)
         render '/end_users/rooms/lowroom'
       elsif current_end_user.quiz_score <= 6
         @end_user = current_end_user
-        @posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:end_user, :favorites, :comments)
+        from = (Time.zone.now - 7.day)
+        to = Time.zone.now
+        posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:end_user, :favorites, :comments)
+        @posts = posts.where(created_at: from...to)
         render '/end_users/rooms/midroom'
       else
         @end_user = current_end_user
-        @posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC").includes(:end_user, :favorites, :comments)
+        from = (Time.zone.now - 7.day)
+        to = Time.zone.now
+        posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC").includes(:end_user, :favorites, :comments)
+        @posts = posts.where(created_at: from...to)
         render '/end_users/rooms/upperroom'
       end
     end
