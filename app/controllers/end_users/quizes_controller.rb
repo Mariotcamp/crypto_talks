@@ -1,5 +1,5 @@
 class EndUsers::QuizesController < ApplicationController
-  before_action :logged_in_end_user, :admin_user?
+  before_action :logged_in_end_user, :admin_user?, :upper_end_user?
 
   def take
     @quizes = Quiz.all
@@ -9,8 +9,24 @@ class EndUsers::QuizesController < ApplicationController
     else
       num = @end_user.posts.count
       if num <= 9
-        flash[:danger] = "投稿数が" + (10 - num ).to_s + "件不足しています"
-        redirect_to lowroom_path
+        @message = "投稿数が" + (10 - num ).to_s + "件不足しています"
+        if @end_user.quiz_score <= 3
+          @post = Post.new
+          from = (Time.zone.now - 7.day)
+          to = Time.zone.now
+          posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:comments, :favorites)
+          @posts = posts.where(created_at: from...to)
+          @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+          render 'end_users/rooms/lowroom'
+        else
+          @post = Post.new
+          from = (Time.zone.now - 7.day)
+          to = Time.zone.now
+          posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:comments, :favorites)
+          @posts = posts.where(created_at: from...to)
+          @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+          render 'end_users/rooms/midroom'
+        end
       elsif @quizes.count < 8
         flash[:danger] = "現在クイズのメンテナンスをしています。しばらく時間を置いてから再度挑戦してください。"
         redirect_to lowroom_path
@@ -24,9 +40,6 @@ class EndUsers::QuizesController < ApplicationController
     @quizes = Quiz.all
     num = 1
     current_end_user.quiz_score = 0
-    #このクイズ番号に動的に応じれられるシンボル設計でないと、クイズ追加したときにエラーが出てしまう。→一様クイズ番号に応じてeach
-    #を効かせられるようにはなったが、num = 1の設計だと、問題を削除したときにidがずれてしまう。→いや、ここはquizのidではなくviewのname
-    #name属性から参照しているから、quiz.idが4とかでもそれが一問目の問題ならviewでのname属性はquiz1になるから大丈夫でした。
     @quizes.each do |quiz|
       quiz_num = "quiz#{num}".intern
       num += 1
@@ -57,4 +70,12 @@ class EndUsers::QuizesController < ApplicationController
     end
   end
 
+  private
+    def upper_end_user?
+      if score = current_end_user.quiz_score
+        if score >= 7
+          redirect_to upperroom_path
+        end
+      end
+    end
 end
