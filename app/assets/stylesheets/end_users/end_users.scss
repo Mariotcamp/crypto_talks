@@ -132,8 +132,6 @@
 }
 .follow-rel-button{
   line-height: 26px;
-  position: absolute;
-  right: 8%;
   margin-top: 15px;
   padding: 5px 15px;
   border-radius: 15px;
@@ -174,6 +172,10 @@
 }
 #end-user-follow-rel-button-show{
   margin-top: 0;
+}
+.show-follow-button{
+  position: absolute;
+  right: 30px;
 }
 //以下エンドユーザーのedit画面のcss
 
@@ -246,6 +248,7 @@
   }
   h2{
     font: bolder 1.7rem sans-serif;
+    width: 470px;
     p{
       font: bolder 1.5rem sans-serif;
       margin: 20px 0 0 10px;
@@ -259,9 +262,26 @@
   font: 1.5rem sans-serif;
   margin-top: 20px;
 }
-
+.following-view{
+  height: 675px;
+  overflow: scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+  scrollbar-width: none;
+}
+.following-view::-webkit-scrollbar{  /* Chrome, Safari 対応 */
+  display: none;
+}
 //followersのcss
 #follower-profile{
   font: 1.5rem sans-serif;
   margin-top: 20px;
+}
+.followers-view{
+  height: 675px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.followers-view::-webkit-scrollbar{
+   display: none;
 }
