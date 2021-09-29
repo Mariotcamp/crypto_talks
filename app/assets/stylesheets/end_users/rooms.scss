@@ -41,7 +41,7 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);;
     .card-body{
-      padding-bottom: 5px;
+      padding: 0 0 5px 0;
       .profile-image{
         margin-top: 5px;
         img{
@@ -102,7 +102,7 @@
 
 .post-form-place{
   position: absolute;
-  bottom: 20px;
+  bottom: 4px;
   width: 90%;
   .profile-image{
     margin-top: 5px;
