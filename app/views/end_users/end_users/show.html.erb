@@ -28,7 +28,23 @@
         <span class="no-level">No-Level</span>
       </div>
     <% end %>
-    <%= render '/shared/follow_stats.html.erb' %>
+    <div class="follow-stats flex">
+      <p>
+        <a id="followed" href="/end_users/<%= @end_user.id %>/following"><%= @end_user.following.count %><span>フォロー中</span></a>
+      </p>
+      <p class="follower-button">
+        <a id="follower" href="/end_users/<%= @end_user.id %>/followers"><%= @end_user.followers.count %><span>フォロワー</span></a>
+      </p>
+      <% unless @end_user == current_end_user %>
+        <div class="show-follow-button" id= "follow-form">
+          <% if current_end_user.following?(@end_user) %>
+            <%= render 'unfollow', end_user: @end_user %>
+          <% else %>
+            <%= render 'follow', end_user: @end_user %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <p class="profile-sentence"><%= @end_user.profile %></p>
     <div class="posting" id="end-user-show-posting">
       <% if @posts %>
