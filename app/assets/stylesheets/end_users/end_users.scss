@@ -285,3 +285,9 @@
 .followers-view::-webkit-scrollbar{
    display: none;
 }
+#rel-follow-end-users-link{
+  color: black;
+  &:hover{
+    color: black;
+  }
+}
