@@ -34,9 +34,9 @@
   <p class="quiz-retry-explain">middleレベル以下のユーザーに2週間に一度のチャンス!<br>クイズを再受験して更なる高みを目指そう！</p>
   <p class="quiz-retry-careful">クイズに再挑戦するには最低でも10件の投稿が必要です。<br>しっかりと勉強してから臨みましょう！！</p>
   <% unless @message.nil? %>
-  <div class="alert alert-danger">
-    <%= @message %>
-  </div>
+    <div class="alert alert-danger">
+      <%= @message %>
+    </div>
   <% end %>
   <p class="quiz-retry-button">クイズに再挑戦する<a href="/quizes" class="quiz-retry-button-content"></a></p>
 </div>

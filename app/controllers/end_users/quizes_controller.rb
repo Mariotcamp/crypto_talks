@@ -28,8 +28,24 @@ class EndUsers::QuizesController < ApplicationController
           render 'end_users/rooms/midroom'
         end
       elsif @quizes.count < 8
-        flash[:danger] = "現在クイズのメンテナンスをしています。しばらく時間を置いてから再度挑戦してください。"
-        redirect_to lowroom_path
+        @message = "現在クイズのメンテナンス中です。時間を置いてから挑戦してください。"
+        if @end_user.quiz_score <= 3
+          @post = Post.new
+          from = (Time.zone.now - 7.day)
+          to = Time.zone.now
+          posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:comments, :favorites)
+          @posts = posts.where(created_at: from...to)
+          @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+          render 'end_users/rooms/lowroom'
+        else
+          @post = Post.new
+          from = (Time.zone.now - 7.day)
+          to = Time.zone.now
+          posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:comments, :favorites)
+          @posts = posts.where(created_at: from...to)
+          @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+          render 'end_users/rooms/midroom'
+        end
       else
         #クイズ画面へ遷移
       end
