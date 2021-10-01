@@ -53,6 +53,13 @@ class EndUsers::QuizesController < ApplicationController
   end
 
   def result
+    if num = current_end_user.quiz_score
+      if num <= 3
+        @level = "Lowroom"
+      else
+        @level = "Midroom"
+      end
+    end
     @quizes = Quiz.all
     num = 1
     current_end_user.quiz_score = 0
@@ -74,11 +81,41 @@ class EndUsers::QuizesController < ApplicationController
       current_end_user.update_attribute(:quiz_score, current_end_user.quiz_score)
       score = current_end_user.quiz_score
       if score <= 3
-        redirect_to lowroom_path
+        if @level
+          @level_message = @level + "からLowroomへ移動しました"
+        end
+        @post = Post.new
+        from = (Time.zone.now - 7.day)
+        to = Time.zone.now
+        posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:comments, :favorites)
+        @posts = posts.where(created_at: from...to)
+        @end_user = current_end_user
+        @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+        render 'end_users/rooms/lowroom'
       elsif score <= 6
-        redirect_to midroom_path
+        if @level
+          @level_message = @level + "からMidroomへ移動しました"
+        end
+        @post = Post.new
+        from = (Time.zone.now - 7.day)
+        to = Time.zone.now
+        posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:comments, :favorites)
+        @posts = posts.where(created_at: from...to)
+        @end_user = current_end_user
+        @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+        render 'end_users/rooms/midroom'
       elsif score <= 8
-        redirect_to upperroom_path
+        if @level
+          @level_message = @level + "からUpperroomへ移動しました"
+        end
+        @post = Post.new
+        from = (Time.zone.now - 7.day)
+        to = Time.zone.now
+        posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC").includes(:comments, :favorites)
+        @posts = posts.where(created_at: from...to)
+        @end_user = current_end_user
+        @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
+        render 'end_users/rooms/upperroom'
       else
         flash[:danger] = "無効なスコア。もう一度クイズに答えてください"
         current_end_user.update_attribute(:quiz_score, null)

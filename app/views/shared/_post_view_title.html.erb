@@ -1,4 +1,4 @@
-<div class="post-view-title">
+<div class="post-view-title flex">
   <% score = current_end_user.quiz_score %>
   <% if score == 0 or score == 1 or score == 2 or score == 3 %>
     <p>LowRoom</p>
@@ -6,5 +6,8 @@
     <p>MiddleRoom</p>
   <% else %>
     <p>UpperRoom</p>
+  <% end %>
+  <% unless @level_message.nil? %>
+    <div class="alert alert-success"><%= @level_message %></div>
   <% end %>
 </div>

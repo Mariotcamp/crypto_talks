@@ -88,5 +88,8 @@
   height: 540px;
   min-height: 540px;
 }
+#comment-error-explanation{
+  margin-top: 10px;
+}
 /*# sourceMappingURL=posts.css.map */
 
