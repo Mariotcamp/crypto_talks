@@ -2,6 +2,7 @@ class EndUsers::EndUsersController < ApplicationController
   before_action :logged_in_end_user, only: [:show, :edit, :update, :following, :followers, :withdraw]
   before_action :correct_current_end_user, only: [:edit, :update]
   before_action :quiz_is_available?, only: [:create]
+
   def new
     @end_user = EndUser.new
     @quizes = Quiz.all

@@ -1,4 +1,5 @@
 class EndUsers::FavoritesController < ApplicationController
+  before_action :logged_in_end_user
 
   def index
     favorites = Favorite.where(end_user_id: current_end_user.id).includes(:post)
