@@ -1,6 +1,6 @@
 class AdminUsers::QuizesController < ApplicationController
-before_action :finished_log_in_as_admin
-before_action :confirm_number_of_quizes, except: [:new, :create]
+  before_action :finished_log_in_as_admin
+  before_action :confirm_number_of_quizes, except: [:new, :create]
 
   def index
     @quizes = Quiz.all

@@ -1,4 +1,5 @@
 class EndUsers::CommentsController < ApplicationController
+  before_action :logged_in_end_user
 
   def create
     @post = Post.find(params[:post_id])

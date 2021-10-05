@@ -1,5 +1,6 @@
 class EndUsers::PostsController < ApplicationController
-before_action :correct_post_end_user, only: [:edit, :update]
+  before_action :logged_in_end_user
+  before_action :correct_post_end_user, only: [:edit, :update]
 
   def create
     @post = Post.new(post_params)

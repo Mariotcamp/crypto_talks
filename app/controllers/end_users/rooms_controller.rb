@@ -1,5 +1,6 @@
 class EndUsers::RoomsController < ApplicationController
   before_action :logged_in_end_user, :admin_user?, :have_score
+
   def lowroom
     low_judge
     @post = Post.new

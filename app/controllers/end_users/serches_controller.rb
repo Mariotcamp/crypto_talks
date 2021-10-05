@@ -1,5 +1,6 @@
 class EndUsers::SerchesController < ApplicationController
   before_action :logged_in_end_user, :upper_end_user?
+
   def index
     @posts = Post.where('sentence LIKE ?', '%'+ params[:coin] +'%').order(id: "DESC").page(params[:page]).per(10)
     unless @posts.any?
