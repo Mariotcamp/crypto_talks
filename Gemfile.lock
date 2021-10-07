@@ -82,6 +82,10 @@ GEM
       rake (< 13.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.3)
@@ -126,6 +130,7 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
+    mysql2 (0.5.3)
     nio4r (2.5.7)
     nokogiri (1.12.0)
       mini_portile2 (~> 2.6.1)
@@ -247,10 +252,12 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug (= 11.0.1)
   capybara (= 3.28.0)
+  dotenv-rails
   jbuilder (= 2.9.1)
   jquery-rails
   kaminari
   listen (= 3.1.5)
+  mysql2
   puma (= 4.3.6)
   rails (= 6.0.3)
   rails-i18n
