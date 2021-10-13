@@ -2,16 +2,15 @@
   <% if current_end_user.admin? %>
     <nav class="admin-top">
       <div class="flex">
-        <a href="/admin_users"><img src="/assets/logo_transparent.png" alt="ロゴ" style="width: 22rem; height: 6.5rem; margin: 0.75rem 0 0 3%;"></a>
+        <a href="/admin_users"><%= image_tag asset_path("logo_transparent.png", alt: "ロゴ"), style: "width: 22rem; height: 6.5rem; margin: 0.75rem 0 0 3%;" %></a>
         <a href="/admin_users/end_users">利用者の一覧</a>
         <a href="/admin_users/quizes">クイズ管理</a>
         <a data-confirm="本当にログアウトしますか？" data-method="delete" href="/logout" style="color: #ff4f4f; display: block; padding: 0.5rem 1rem;">ログアウト</a>
       </div>
     </nav>
-
   <% else %>
     <header class="flex logo-left">
-      <img src="/assets/logo_transparent.png" alt="ロゴ">
+      <%= image_tag asset_path("logo_transparent.png", alt: "ロゴ") %>
       <nav>
         <ul class="header-nav">
           <%= link_to 'ログアウト', logout_path, method: :delete, class: "quiz-log-out-button" %>
@@ -21,10 +20,10 @@
   <% end %>
 <% else %>
   <header class="flex logo-left">
-    <img src="/assets/logo_transparent.png" alt="ロゴ">
+    <%= image_tag asset_path("logo_transparent.png", alt: "ロゴ") %>
     <nav>
       <ul class="header-nav">
-        <a href="#about">このサービスについて</a><!--ここはid属性をつけてクリックしたら画面の下に飛ぶようにする-->
+        <a href="#about">このサービスについて</a>
         <a href="/login">サインイン</a>
         <a href="/end_users/new">さっそくはじめる</a>
       </ul>

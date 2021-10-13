@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="col-lg-5 top-content-sub">
-          <img src="assets/悩んでいる人.jpg" alt="悩んでいる図">
+          <%= image_tag asset_path("悩んでいる人.jpg", alt: "悩んでいる人の写真") %>
         </div>
       </div>
     </div>
@@ -36,10 +36,10 @@
         中にはこの知識差を利用して詐欺コインを買わせるなどと考えている人もいます。このサービスではトークルームをクイズの成績をもとに3つのレベルに分けて、知識差を利用した詐欺を防ぎます。
       </p>
     </div>
-    <div class="col-lg-5 offset-1"><img src="assets/平和.png" alt="手を繋ぐ人々" style="width:40rem;"></div>
+    <div class="col-lg-5 offset-1"><%= image_tag asset_path("平和.png", alt: "手を繋ぐ人々"), style: "width: 40rem" %></div>
   </div>
   <div class="row service-detail flex">
-    <div class="col-lg-5"><img src="assets/技術上昇.jpeg" alt="レベルアップする人" style="width:45rem;"></div>
+    <div class="col-lg-5"><%= image_tag asset_path("技術上昇.jpeg", alt: "レベルアップを表す図"), style: "width:45rem;" %></div>
     <div class="col-lg-5 offset-1">
       <p class="title">格差を広げないシステム設計</p><br>
       <p class="explanation">
@@ -57,7 +57,7 @@
       </p>
     </div>
     <div class="col-lg-5 offset-1">
-      <img src="assets/仲間.jpg" alt="仲間ができる" style="width: 45rem;">
+      <%= image_tag asset_path("仲間.jpg", alt: "仲間ができる様子"), style: "width: 45rem" %>
     </div>
   </div>
 </div>
