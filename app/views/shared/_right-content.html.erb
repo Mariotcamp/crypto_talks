@@ -18,7 +18,7 @@
       <% if ranking_end_user.image.attached? %>
         <div style="margin-left: 20px;"><a href="/end_users/<%= ranking_end_user.id %>"><%= image_tag ranking_end_user.image, class: "ranking-end-user-image" %></a></div>
       <% else %>
-        <div style="margin-left: 20px;"><a href="/end_users/<%= ranking_end_user.id %>"><img src="/assets/no_image.jpg" class="ranking-end-user-image"></a></div>
+        <div style="margin-left: 20px;"><a href="/end_users/<%= ranking_end_user.id %>"><%= image_tag asset_path("no_image.jpg", alt: "no_image"), class: "ranking-end-user-image" %></a></div>
       <% end %>
       <p class="name">
         <%= ranking_end_user.name %>

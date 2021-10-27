@@ -4,7 +4,7 @@
     <% if @end_user.image.attached? %>
       <div class="profile-image"><%= image_tag @end_user.image %></div>
     <% else %>
-      <div class="profile-image"><img src="/assets/no_image.jpg"></div>
+      <div class="profile-image"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></div>
     <% end %>
     <div class="end-user-name-edit-withdraw flex">
       <p class="end-user-name"><%= @end_user.name %></p>
@@ -55,7 +55,7 @@
                 <% if post.end_user.image.attached? %>
                   <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><%= image_tag post.end_user.image %></a></div>
                 <% else %>
-                  <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
+                  <div class="profile-image"><a href="/end_users/<%= post.end_user.id %>"><%= image_tag asset_path("no_image.jpg", alt: "no_image.jpg") %></a></div>
                 <% end %>
                 <h2 class="post_end_user_name"><a href="/end_users/<%= post.end_user.id %>"><%= post.end_user.name %></a><br><p><%= post.sentence %></p></h2>
                 <% if post.end_user.id == current_end_user.id %>
