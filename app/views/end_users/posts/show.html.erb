@@ -9,7 +9,7 @@
             <% if @post.end_user.image.attached? %>
               <div class="profile-image"><a href="/end_users/<%= @post.end_user.id %>"><%= image_tag @post.end_user.image %></a></div>
             <% else %>
-              <div class="profile-image"><a href="/end_users/<%= @post.end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
+              <div class="profile-image"><a href="/end_users/<%= @post.end_user.id %>"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></a></div>
             <% end %>
             <h2 class="post_end_user_name"><a href="/end_users/<%= @post.end_user.id %>"><%= @post.end_user.name %></a><br><p><%= @post.sentence %></p></h2>
             <% if @post.end_user.id == current_end_user.id %>
@@ -49,7 +49,7 @@
           <% if current_end_user.image.attached? %>
             <div class="profile-image" id="comment-end-user"><a href="/end_users/<%= current_end_user.id %>"><%= image_tag current_end_user.image %></a></div>
           <% else %>
-            <div class="profile-image" id="comment-end-user"><a href="/end_users/<%= current_end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
+            <div class="profile-image" id="comment-end-user"><a href="/end_users/<%= current_end_user.id %>"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></a></div>
           <% end %>
           <%= f.text_area :sentence, :placeholder => "コメントを投稿", class: "comment-post-form" %>
           <%= f.submit '返信', class: "comment-submit-button" %>

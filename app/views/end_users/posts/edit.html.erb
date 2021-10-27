@@ -9,7 +9,7 @@
             <% if @post.end_user.image.attached? %>
               <div class="profile-image"><%= image_tag @post.end_user.image %></div>
             <% else %>
-              <div class="profile-image"><img src="/assets/no_image.jpg"></div>
+              <div class="profile-image"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></div>
             <% end %>
             <h2 class="post_end_user_name"><%= @post.end_user.name %><br>
             <div><%= render '/shared/flash_messages' %></div>

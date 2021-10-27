@@ -2,7 +2,7 @@
   <% if @end_user.image.attached? %>
     <div class="profile-image"><%= image_tag @end_user.image %></div>
   <% else %>
-    <div class="profile-image"><img src="/assets/no_image.jpg"></div>
+    <div class="profile-image"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></div>
   <% end %>
   <div class="post-form">
     <%= form_with(model: post, local: true) do |f| %>

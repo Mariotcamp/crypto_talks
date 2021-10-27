@@ -1,5 +1,5 @@
 <div class="left-content">
-  <a href="/"><img src="/assets/logo_transparent.png" alt="ロゴ"></a> <!-- あえてルートにhrefを設定するのもあり -->
+  <a href="/"><%= image_tag asset_path("logo_transparent.png", alt: "ロゴ") %></a>
   <a href="/"><i class="fas fa-undo-alt"></i>　トップ　　　</a>
   <a href="/end_users/<%= current_end_user.id %>"><i class="fas fa-users"></i>　アカウント　</a>
   <a href="/favorites"><i class="fas fa-heart"></i>　自分のいいね</a>
