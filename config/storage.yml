@@ -12,6 +12,13 @@ amazon:
   secret_access_key: <%= ENV['+0+0tRViF8AWKhBFImzF4BQ3R1QTIeG7cFJuUTNc'] %>
   region:            <%= ENV['ap-northeast-1'] %>
   bucket:            <%= ENV['cryptotalks'] %>
+# Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
+# amazon:
+#   service: S3
+#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+#   region: us-east-1
+#   bucket: your_own_bucket
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
