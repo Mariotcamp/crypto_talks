@@ -45,13 +45,13 @@ class EndUsers::EndUsersController < ApplicationController
 
   def following
     @end_user = EndUser.find(params[:id])
-    @following_end_users = @end_user.active_relationships.order(:relationship, id: "DESC").map{|relationship| relationship.followed}
+    @following_end_users = @end_user.active_relationships.order(id: "DESC").map{|relationship| relationship.followed}
     @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
 
   def followers
     @end_user = EndUser.find(params[:id])
-    @follower_end_users = @end_user.passive_relationships.order(:relationship, id: "DESC").map{|relationship| relationship.follower}
+    @follower_end_users = @end_user.passive_relationships.order(id: "DESC").map{|relationship| relationship.follower}
     @ranking_end_users = EndUser.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(3).pluck(:followed_id))
   end
 
