@@ -12,7 +12,7 @@
             <% if following_end_user.image.attached? %>
               <div class="rel-follow-img profile-image"><%= image_tag following_end_user.image %></div>
             <% else %>
-              <div class="rel-follow-img profile-image"><img src="/assets/no_image.jpg"></div>
+              <div class="rel-follow-img profile-image"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></div>
             <% end %>
             <% if @end_user == current_end_user %>
               <h2>
