@@ -7,7 +7,7 @@
             <% if comment.end_user.image.attached? %>
               <div class="profile-image"><a href="/end_users/<%= comment.end_user.id %>"><%= image_tag comment.end_user.image %></a></div>
              <% else %>
-               <div class="profile-image"><a href="/end_users/<%= comment.end_user.id %>"><%= image_tag asset_path("no_image.jpg", alt: "no_image") %></a></div>
+               <div class="profile-image"><a href="/end_users/<%= comment.end_user.id %>"><img src="/assets/no_image.jpg"></a></div>
              <% end %>
             <h2 class="post_end_user_name"><a href="/end_users/<%= comment.end_user.id %>"><%= comment.end_user.name %></a><br><p><%= comment.sentence %></p></h2>
             <% if comment.end_user.id == current_end_user.id %>
