@@ -4,7 +4,7 @@ class EndUsers::RoomsController < ApplicationController
   def lowroom
     low_judge
     @post = Post.new
-    from = (Time.zone.now - 7.day)
+    from = (Time.zone.now - 2.month)
     to = Time.zone.now
     posts = Post.where(end_user_quiz_score: 0..3).order(created_at: "DESC").includes(:comments, :favorites)
     @posts = posts.where(created_at: from...to)
@@ -15,7 +15,7 @@ class EndUsers::RoomsController < ApplicationController
   def midroom
     mid_judge
     @post = Post.new
-    from = (Time.zone.now - 7.day)
+    from = (Time.zone.now - 2.month)
     to = Time.zone.now
     posts = Post.where(end_user_quiz_score: 4..6).order(created_at: "DESC").includes(:comments, :favorites)
     @posts = posts.where(created_at: from...to)
@@ -26,7 +26,7 @@ class EndUsers::RoomsController < ApplicationController
   def upperroom
     upper_judge
     @post = Post.new
-    from = (Time.zone.now - 7.day)
+    from = (Time.zone.now - 2.month)
     to = Time.zone.now
     posts = Post.where(end_user_quiz_score: 7..8).order(created_at: "DESC").includes(:comments, :favorites)
     @posts = posts.where(created_at: from...to)
